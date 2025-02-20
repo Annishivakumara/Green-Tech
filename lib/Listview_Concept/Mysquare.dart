@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class Mysquare extends StatelessWidget {
   final String posts;
 
-  Mysquare({required this.posts});
+  const Mysquare({super.key, required this.posts});
 
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
