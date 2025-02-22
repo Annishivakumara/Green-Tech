@@ -7,7 +7,7 @@ class Camara extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-     color: Colors.amber
+     color: Colors.white
       ),
       child: Center(
           child: Text(

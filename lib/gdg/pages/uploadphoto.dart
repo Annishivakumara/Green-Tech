@@ -7,7 +7,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Text(
-          'welcome to Profile',
+          'camara',
           style: TextStyle(
             color: Colors.black,
             fontSize: 30,
