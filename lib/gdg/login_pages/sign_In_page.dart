@@ -1,7 +1,7 @@
-import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/gdg/login_pages/signup.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -16,9 +16,10 @@ class _SignInState extends State<SignIn> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
- // Future Sign_In() async{
- //   await Firebase
- // }
+  Future SignIn() async{
+    
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +50,7 @@ class _SignInState extends State<SignIn> {
                     fontSize: 46,
                   ),
                 ),
-
-                Text(
+                 Text(
                   'Welcome to E-World',
                   style: TextStyle(
                       color: Colors.black,
@@ -64,17 +64,22 @@ class _SignInState extends State<SignIn> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Container(
+                    
                     decoration: BoxDecoration(
+                      
                       color: Colors.grey[200],
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
+                      
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
+                      
                         controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
+                          icon: Icon(Icons.email),
                           hintText: 'Email',
                         ),
                       ),
@@ -96,10 +101,12 @@ class _SignInState extends State<SignIn> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
+                        
                         controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
-                            border: InputBorder.none, hintText: 'Password'),
+                          icon: Icon(Icons.lock_outlined),
+                          border: InputBorder.none, hintText: 'Password'),
                       ),
                     ),
                   ),
@@ -113,19 +120,23 @@ class _SignInState extends State<SignIn> {
                   child: GestureDetector
                   (
                   //  onTap: Sign_In(),
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreenAccent,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Sign_In',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 29.0,
-                            fontWeight: FontWeight.bold,
+                    child: GestureDetector(
+                      onTap: SignIn,
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.lightGreenAccent,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Center(
+                          child: Text(
+                      
+                            'Sign In',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 29.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -140,18 +151,25 @@ class _SignInState extends State<SignIn> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'don\'t have an account?  ',
+                      'don\'t have an account ?  ',
                       style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'Sign up',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
+                        Signup(),
+                        ),);
+                      },
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
                       ),
                     )
                   ],

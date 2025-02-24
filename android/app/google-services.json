@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "339662532743",
+    "project_id": "green-tech-fbdf8",
+    "storage_bucket": "green-tech-fbdf8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339662532743:android:8fdd520474e124f19ac822",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB3xd0IcH-Oq6fpSdozTufgWqOWDqmkVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
