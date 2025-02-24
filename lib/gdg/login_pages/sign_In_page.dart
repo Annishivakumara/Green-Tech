@@ -1,4 +1,5 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/gdg/login_pages/signup.dart';
@@ -16,10 +17,25 @@ class _SignInState extends State<SignIn> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  Future SignIn() async{
-    
+  Future SignIn() async {
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),  // Trim spaces
+      password: _passwordController.text.trim(),
+    );
+  } on FirebaseAuthException catch (e) {
+    print('Error: ${e.message}');  // Print exact error message
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(e.message ?? "Authentication failed")),
+    );
   }
-  
+}
+
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +66,7 @@ class _SignInState extends State<SignIn> {
                     fontSize: 46,
                   ),
                 ),
-                 Text(
+                Text(
                   'Welcome to E-World',
                   style: TextStyle(
                       color: Colors.black,
@@ -64,18 +80,14 @@ class _SignInState extends State<SignIn> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Container(
-                    
                     decoration: BoxDecoration(
-                      
                       color: Colors.grey[200],
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
-                      
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
-                      
                         controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -101,12 +113,12 @@ class _SignInState extends State<SignIn> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
-                        
                         controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
-                          icon: Icon(Icons.lock_outlined),
-                          border: InputBorder.none, hintText: 'Password'),
+                            icon: Icon(Icons.lock_outlined),
+                            border: InputBorder.none,
+                            hintText: 'Password'),
                       ),
                     ),
                   ),
@@ -117,11 +129,9 @@ class _SignInState extends State<SignIn> {
                 //sigin button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: GestureDetector
-                  (
-                  //  onTap: Sign_In(),
-                    child: GestureDetector(
+                  child: GestureDetector(
                       onTap: SignIn,
+                    
                       child: Container(
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
@@ -130,7 +140,6 @@ class _SignInState extends State<SignIn> {
                         ),
                         child: Center(
                           child: Text(
-                      
                             'Sign In',
                             style: TextStyle(
                               color: Colors.black,
@@ -139,7 +148,7 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                         ),
-                      ),
+                      
                     ),
                   ),
                 ),
@@ -159,9 +168,11 @@ class _SignInState extends State<SignIn> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
-                        Signup(),
-                        ),);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Signup(),
+                          ),
+                        );
                       },
                       child: Text(
                         'Sign up',
